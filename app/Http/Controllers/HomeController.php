@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $cards = \DB::table('cards')->select('term', 'definition')->get();
+
+        return view('home', compact('cards'));
     }
 }
