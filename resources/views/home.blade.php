@@ -21,28 +21,51 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="/cards">
+                            <form method="post" action="/card">
 		                    @csrf
 
                             <div class="form-group">
-                                <label for="name">Term</label>
+                                <label for="term">Term</label>
                                     <input type="text" class="form-control" name="term">
                                     </div>
 
                                 <div class="form-group">
-                                    <label for="description">Definition</label>
+                                    <label for="definition">Definition</label>
                                         <textarea class="form-control" name="definition" rows="3"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
                             </form>
 
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- <div class="row justify-content-center">
+        @foreach ($cards as $card)
+            <p>{{ $card->definition }} : {{ $card->term }}<br /></p>
+        @endforeach
+    </div> -->
+    <div class="row justify-content-center mt-4">
+        <div class="card" style="width:90%;height:400px;">
+            <div class="card-body">
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editModal">Edit Card</button>
+            </div>
+
+            <div class="card-body align-middle text-center">
+                {{ $card->definition }}
+            </div>
+
+            <div class="card-body">
+                <button type="button" class="btn btn-danger">Delete Card</button>
+            </div>
+
         </div>
     </div>
 </div>
