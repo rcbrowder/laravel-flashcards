@@ -55,8 +55,7 @@ class CardController extends Controller
             ['term' => $request->input('term'), 'definition' => $request->input('definition')]
         );
 
-        $request->session()->flash('status', 'Card created!');
-        return redirect()->action('CardController@index');
+        $request->session()->flash('CardController@index');
     }
 
     /**
@@ -78,7 +77,8 @@ class CardController extends Controller
      */
     public function edit($id)
     {
-        \DB::table('cards')->where('id', $id)->first();
+        $card = \DB::table('cards')->where('id', $id)->first();
+        return view('cards.edit', compact('card'));
     }
 
     /**
@@ -98,8 +98,10 @@ class CardController extends Controller
         $card = \DB::table('cards')->where('id', $id)->first();
 
         $card->term = $request->input('term');
-        $activity->definition = $request->input('definition');
-        $activity->save();
+        $card->definition = $request->input('definition');
+        \DB::table('cards')->insert(
+            ['term' => $request->input('term'), 'definition' => $request->input('definition')]
+        );
         $request->session()->flash('status', 'Card updated!');
         return redirect()->action('CardController@index');
     }
@@ -112,6 +114,8 @@ class CardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \App\Activity::destroy($id);
+        $request->session()->flash('status', 'Activity deleted!');
+        return redirect()->route('activities.index');
     }
 }
