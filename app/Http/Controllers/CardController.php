@@ -7,13 +7,23 @@ use Illuminate\Http\Request;
 class CardController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $cards = \DB::table('cards')->select('term', 'definition')->get();
+        $cards = \DB::table('cards')->get();
 
         return view('home', compact('cards'));
     }
@@ -91,7 +101,7 @@ class CardController extends Controller
         $activity->definition = $request->input('definition');
         $activity->save();
         $request->session()->flash('status', 'Card updated!');
-        return redirect()->action('CardController@index');        
+        return redirect()->action('CardController@index');
     }
 
     /**
