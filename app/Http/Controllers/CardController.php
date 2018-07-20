@@ -70,7 +70,8 @@ class CardController extends Controller
      */
     public function show($id)
     {
-        $cards = \DB::table('cards')->where('id', $id)->first();
+        $id = \Auth::id();
+        $cards = \DB::table('cards')->where('creator_id', $id)->get();
         return view('cards.show', compact('cards'));
 
     }
