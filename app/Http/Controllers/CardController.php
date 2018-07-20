@@ -112,10 +112,10 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        \App\Activity::destroy($id);
+        $deletedRows = \DB::table('cards')->where('id', $id)->delete();
         $request->session()->flash('status', 'Activity deleted!');
-        return redirect()->route('activities.index');
+        return redirect()->action('CardController@index');
     }
 }
