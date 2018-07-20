@@ -23,7 +23,8 @@ class CardController extends Controller
      */
     public function index()
     {
-        $cards = \DB::table('cards')->get();
+        $id = \Auth::id();
+        $cards = \DB::table('cards')->where('creator_id', $id)->get();
 
         return view('cards.index', compact('cards'));
     }
@@ -46,13 +47,15 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
+        $id = \Auth::id();
+
         $validatedData = $request->validate([
             'term' => 'required',
             'definition' => 'required',
         ]);
 
         \DB::table('cards')->insert(
-            ['term' => $request->input('term'), 'definition' => $request->input('definition')]
+            ['term' => $request->input('term'), 'definition' => $request->input('definition'), 'creator_id' => $id]
         );
 
         $request->session()->flash('status','Card created!');
