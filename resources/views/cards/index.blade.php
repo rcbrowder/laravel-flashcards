@@ -18,12 +18,10 @@
         </div>
     @endif
 
-    <h1>WAT</h1>
+<div class="container">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">+ New Card</button>
 
-    <div class="container">
-        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">+ New Card</button>
-
-        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -33,7 +31,7 @@
                            </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="/card">
+                        <form method="post" action="/cards">
                             @csrf
 
                             <div class="form-group">
@@ -55,28 +53,26 @@
 
                 </div>
             </div>
-        </div> -->
-    </div>
+        </div>
+</div>
 
 
     @foreach ($cards as $card)
 
-        <h1>Hello?</h1>
-
-    		<div class="card m-2 text-center">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $card->term }}</h5>
-		            <a class="btn btn-sm btn-outline-success" href="/cards/{{ $card->id }}" class="card-link">Show</a>
-                    <a class="btn btn-sm btn-outline-primary" href="/cards/{{ $card->id }}/edit" class="card-link">Edit</a>
-                    <form style="display: inline-block;" method="post" action="/cards/{{ $card->id }}">
-                        @csrf
-	                    @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                    </form>
-                </div>
+		<div class="card m-2 text-center">
+            <div class="card-body">
+                <h5 class="card-title">{{ $card->term }}</h5>
+	            <a class="btn btn-sm btn-outline-success" href="/cards/{{ $card->id }}" class="card-link">Show</a>
+                <a class="btn btn-sm btn-outline-primary" href="/cards/{{ $card->id }}/edit" class="card-link">Edit</a>
+                <form style="display: inline-block;" method="post" action="/cards/{{ $card->id }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                </form>
             </div>
+        </div>
 
-    	@endforeach
+    @endforeach
 
 @endsection
 

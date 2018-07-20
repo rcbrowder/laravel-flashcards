@@ -25,7 +25,7 @@ class CardController extends Controller
     {
         $cards = \DB::table('cards')->get();
 
-        return view('home', compact('cards'));
+        return view('cards.index', compact('cards'));
     }
 
     /**
@@ -55,7 +55,8 @@ class CardController extends Controller
             ['term' => $request->input('term'), 'definition' => $request->input('definition')]
         );
 
-        $request->session()->flash('CardController@index');
+        $request->session()->flash('status','Card created!');
+        return redirect()->action('CardController@index');
     }
 
     /**
@@ -66,7 +67,9 @@ class CardController extends Controller
      */
     public function show($id)
     {
-        //
+        $cards = \DB::table('cards')->where('id', $id)->first();
+        return view('cards.show', compact('cards'));
+
     }
 
     /**
