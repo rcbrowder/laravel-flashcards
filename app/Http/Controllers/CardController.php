@@ -95,13 +95,9 @@ class CardController extends Controller
             'definition' => 'required',
         ]);
 
-        $card = \DB::table('cards')->where('id', $id)->first();
+        \DB::table('cards')->where('id', $id)->update(['term' => $request->input('term')]);
+        \DB::table('cards')->where('id', $id)->update(['definition' => $request->input('definition')]);
 
-        $card->term = $request->input('term');
-        $card->definition = $request->input('definition');
-        \DB::table('cards')->insert(
-            ['term' => $request->input('term'), 'definition' => $request->input('definition')]
-        );
         $request->session()->flash('status', 'Card updated!');
         return redirect()->action('CardController@index');
     }
