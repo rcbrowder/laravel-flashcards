@@ -14,22 +14,10 @@
 
                     <div class="carousel-item">
                         <div class="card m-2 text-center d-block">
-
-                            <vue-flip>
-                                <div slot="front">
-                                    {{ $card->term }}
-                                </div>
-                                <div slot="back">
-                                    { $card->definition }}
-                                </div>
-                            </vue-flip>
-
-
-                            <!-- <div class="card-header">{{ $card->term }}</div>
-                            <div class="card-body" style="background-color: #ff6666; height: 520px">{{ $card->definition }}</div> -->
+                            <div class="card-header">{{ $card->term }}</div>
+                            <div class="card-body" style="background-color: #ff6666; height: 520px">{{ $card->definition }}</div>
                         </div>
                     </div>
-
 
                 @endforeach
 
