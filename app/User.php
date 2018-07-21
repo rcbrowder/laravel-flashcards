@@ -28,6 +28,11 @@ class User extends Authenticatable
     ];
 
 
-    public function decks_created() {
+    public function decks() {
         return $this->hasMany('App\Deck', 'user_id');
     }
+
+    public function cards()
+   {
+       return $this->hasManyThrough('App\Card', 'App\Deck');
+   }
