@@ -16,8 +16,8 @@ class CreateDecksTable extends Migration
         Schema::create('decks', function (Blueprint $table) {
             $table->increments('id');
             $table->name('string');
-            $table->unsignedInteger('creator_id');
-            $table->foreign('creator_id')->references('id')->on('users');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
