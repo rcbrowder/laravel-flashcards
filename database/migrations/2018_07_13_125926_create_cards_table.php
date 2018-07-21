@@ -17,7 +17,7 @@ class CreateCardsTable extends Migration
             $table->increments('id');
             $table->string('term');
             $table->text('definition');
-            $table->unsignedInteger('creator_id');
+            $table->unsignedInteger('deck_id');
             $table->foreign('deck_id')->references('id')->on('decks');
             $table->timestamps();
         });
