@@ -48,6 +48,9 @@ class CardController extends Controller
     public function store(Request $request)
     {
         $id = \Auth::id();
+        $user = \Auth::user();
+        $decks = $user->decks;
+        $cards = $user->cards;
 
         $validatedData = $request->validate([
             'term' => 'required',
@@ -55,11 +58,11 @@ class CardController extends Controller
         ]);
 
         \DB::table('cards')->insert(
-            ['term' => $request->input('term'), 'definition' => $request->input('definition'), 'creator_id' => $id]
+            ['term' => $request->input('term'), 'definition' => $request->input('definition'), 'deck_id' => $id]
         );
 
         $request->session()->flash('status','Card created!');
-        return redirect()->action('CardController@index');
+        return redirect()->route('home');
     }
 
     /**
