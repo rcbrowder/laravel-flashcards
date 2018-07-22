@@ -99,7 +99,7 @@
                                 <h5 class="card-title">{{ $deck->name }}</h5>
 
 
-                                <!-- <a class="btn btn-sm btn-outline-success" href="/decks/{{ $deck->id }}" class="card-link">Show</a> -->
+                                <!-- <a class="btn btn-sm btn-outline-success" href="/decks/{{ $deck->id }}" class="card-link">Show</a>
                                 <a class="btn btn-sm btn-outline-primary" href="/decks/{{ $deck->id }}/edit" class="card-link">Edit</a>
 
 
@@ -107,7 +107,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                                </form>
+                                </form> -->
                             </div>
                         </a>
                     </div>

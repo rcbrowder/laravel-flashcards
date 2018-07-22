@@ -93,6 +93,8 @@ class DeckController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \App\Activity::destroy($id);
+        $request->session()->flash('status', 'Deck deleted!');
+        return redirect()->route('home');
     }
 }
