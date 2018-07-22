@@ -36,3 +36,5 @@ class User extends Authenticatable
    {
        return $this->hasManyThrough('App\Card', 'App\Deck');
    }
+
+}
