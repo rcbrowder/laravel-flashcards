@@ -19,5 +19,14 @@ class DecksTableSeeder extends Seeder
     		'created_at' => Carbon::now(),
     		'updated_at' => Carbon::now()
     	]);
+
+        DB::table('decks')->insert([
+    		'name' => 'Stuff',
+    		'user_id' => 27,
+    		'created_at' => Carbon::now(),
+    		'updated_at' => Carbon::now()
+    	]);
+
+
     }
 }

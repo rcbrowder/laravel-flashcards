@@ -23,9 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = \Auth::user();
+        $decks = $user->decks;
+        $cards = $user->cards;
 
-        $cards = \DB::table('cards')->select('term', 'definition')->get();
-
-        return view('home', compact('cards'));
+        return view('home', compact('decks'), compact('cards'));
     }
 }

@@ -16,7 +16,7 @@ class CardsTableSeeder extends Seeder
         DB::table('cards')->insert([
     		'term' => 'Euchre',
     		'definition' => 'A trick-taking card game played with standard playing cards',
-            'deck_id' => 1,
+            'deck_id' => 2,
     		'created_at' => Carbon::now(),
     		'updated_at' => Carbon::now()
     	]);
@@ -32,7 +32,7 @@ class CardsTableSeeder extends Seeder
     	DB::table('cards')->insert([
     		'term' => 'Baseball',
     		'definition' => 'A bat-and-ball game played between two opposing teams',
-            'deck_id' => 1,
+            'deck_id' => 2,
     		'created_at' => Carbon::now(),
     		'updated_at' => Carbon::now()
     	]);
