@@ -23,10 +23,10 @@ class CardController extends Controller
      */
     public function index()
     {
-        $id = \Auth::id();
-        $cards = \DB::table('cards')->where('creator_id', $id)->get();
+        $user = \Auth::user();
+        $cards = $user->cards;
 
-        return view('cards.index', compact('cards'));
+        return view('', compact('cards'));
     }
 
     /**
@@ -47,22 +47,17 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        $id = \Auth::id();
-        $user = \Auth::user();
-        $decks = $user->decks;
-        $cards = $user->cards;
-
         $validatedData = $request->validate([
             'term' => 'required',
             'definition' => 'required',
         ]);
 
         \DB::table('cards')->insert(
-            ['term' => $request->input('term'), 'definition' => $request->input('definition'), 'deck_id' => $id]
+            ['term' => $request->input('term'), 'definition' => $request->input('definition'), 'deck_id' => $request->input('deck_id')]
         );
 
         $request->session()->flash('status','Card created!');
-        return redirect()->route('home');
+        return redirect()->action('DeckController@show', $request->input('deck_id'));
     }
 
     /**
@@ -73,9 +68,9 @@ class CardController extends Controller
      */
     public function show($id)
     {
-        $id = \Auth::id();
-        $cards = \DB::table('cards')->where('creator_id', $id)->get();
-        return view('cards.show', compact('cards'));
+        $card = \App\Card::where('id', $id)->get();
+
+        return view('cards.show', compact('card'));
 
     }
 
@@ -120,8 +115,11 @@ class CardController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $deletedRows = \DB::table('cards')->where('id', $id)->delete();
+        $card = \App\Card::where('id', $id)->first();
+        $deck_id = $card->deck_id;
+
+        $card->delete();
         $request->session()->flash('status', 'Activity deleted!');
-        return redirect()->action('CardController@index');
+        return redirect()->action('DeckController@show', compact('deck_id'));
     }
 }

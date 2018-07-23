@@ -59,7 +59,11 @@ class DeckController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = \Auth::user();
+        $deck = \App\Deck::find($id);
+        $cards = $user->cards;
+
+        return view('decks.show', compact('cards'), compact('deck'));
     }
 
     /**
