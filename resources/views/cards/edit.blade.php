@@ -2,9 +2,9 @@
 
 @section('content')
 
-	<form method="post" action="/cards/{{ $card->id }}">
+	<form method="get" action="/cards/{{ $card->id }}">
 		@csrf
-		{{ method_field('PATCH') }}
+		@method('PATCH')
 
 		<div class="form-group">
 			<label for="term">Term</label>
@@ -16,7 +16,7 @@
 			<textarea class="form-control" id="description" name="definition" rows="3">{{ $card->definition }}</textarea>
 		</div>
 
-		<a href="/cards" class="btn btn-secondary">Cancel</a>
+		<a href="/decks/{{ $card->deck_id }}" class="btn btn-secondary">Cancel</a>
 		<button class="btn btn-primary" type="submit">Save</button>
 
 	</form>

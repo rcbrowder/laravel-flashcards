@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <h1 class="mb-4">Sports</h1>
+        <h1 class="mb-4">{{ $deck->name }}</h1>
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCardModal">+ New Card</button>
 

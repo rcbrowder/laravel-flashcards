@@ -61,7 +61,7 @@ class DeckController extends Controller
     {
         $user = \Auth::user();
         $deck = \App\Deck::find($id);
-        $cards = $user->cards;
+        $cards = \App\Card::where('deck_id', $id)->get();
 
         return view('decks.show', compact('cards'), compact('deck'));
     }

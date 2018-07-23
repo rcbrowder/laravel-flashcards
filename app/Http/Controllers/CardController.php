@@ -23,10 +23,10 @@ class CardController extends Controller
      */
     public function index()
     {
-        $user = \Auth::user();
-        $cards = $user->cards;
-
-        return view('', compact('cards'));
+        // $user = \Auth::user();
+        // $deck = $user
+        //
+        // return redirect()->action('DeckController@show', compact('cards'));
     }
 
     /**
@@ -95,6 +95,9 @@ class CardController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $card = \App\Card::where('id', $id)->first();
+        $deck_id = $card->deck_id;
+
         $validatedData = $request->validate([
             'term' => 'required',
             'definition' => 'required',
@@ -104,7 +107,7 @@ class CardController extends Controller
         \DB::table('cards')->where('id', $id)->update(['definition' => $request->input('definition')]);
 
         $request->session()->flash('status', 'Card updated!');
-        return redirect()->action('CardController@index');
+        return redirect()->action('DeckController@show', compact('deck_id'));
     }
 
     /**
