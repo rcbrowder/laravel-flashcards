@@ -68,9 +68,10 @@ class CardController extends Controller
      */
     public function show($id)
     {
-        $card = \App\Card::where('id', $id)->get();
+        $card = \App\Card::where('id', $id)->first();
+        $cards = \App\Card::where('deck_id', $card->deck_id )->get();
 
-        return view('cards.show', compact('card'));
+        return view('cards.show', compact('cards'));
 
     }
 

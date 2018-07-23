@@ -25,7 +25,7 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newDeckModal">+ New Deck</button>
         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">+ New Card</button> -->
 
-        
+
 
 
             <div class="modal fade" id="newDeckModal" tabindex="-1" role="dialog" aria-labelledby="newDeckModalLabel" aria-hidden="true">
@@ -97,6 +97,7 @@
         		<div class="card m-2 text-center">
                     <div class="card-body">
                         <h5 class="card-title">{{ $card->term }}</h5>
+                        <p> "{{ $card->definition }}" </p>
         	            <a class="btn btn-sm btn-outline-success" href="/cards/{{ $card->id }}" class="card-link">Show</a>
                         <a class="btn btn-sm btn-outline-primary" href="/cards/{{ $card->id }}/edit" class="card-link">Edit</a>
                         <form style="display: inline-block;" method="post" action="/cards/{{ $card->id }}">

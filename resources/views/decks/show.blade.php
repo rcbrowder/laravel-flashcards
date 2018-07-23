@@ -6,8 +6,7 @@
 
         <h1 class="mb-4">{{ $deck->name }}</h1>
 
-        <a href="/cards/card" class="btn btn-success">Start Quiz!</a>
-
+        <a href="/quiz/{{ $deck->id }}" class="btn btn-success">Start Quiz!</a>
 
 
         <div class="modal fade" id="newCardModal" tabindex="-1" role="dialog" aria-labelledby="newCardModalLabel" aria-hidden="true">
@@ -54,6 +53,7 @@
         		<div class="card m-2 text-center">
                     <div class="card-body">
                         <h5 class="card-title">{{ $card->term }}</h5>
+                        <p> "{{ $card->definition }}" </p>
         	            <a class="btn btn-sm btn-outline-success" href="/cards/{{ $card->id }}" class="card-link">Show</a>
                         <a class="btn btn-sm btn-outline-primary" href="/cards/{{ $card->id }}/edit" class="card-link">Edit</a>
                         <form style="display: inline-block;" method="post" action="/cards/{{ $card->id }}">
