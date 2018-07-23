@@ -18,59 +18,99 @@
         </div>
     @endif
 
+    <div class="container">
+
+        <h2>Decks</h2>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newDeckModal">+ New Deck</button>
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">+ New Card</button> -->
 
 
-    @foreach ($cards as $card)
 
-    		<div class="card m-2 text-center">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $card->term }}</h5>
-		            <a class="btn btn-sm btn-outline-success" href="/cards/{{ $card->id }}" class="card-link">Show</a>
-                    <a class="btn btn-sm btn-outline-primary" href="/cards/{{ $card->id }}/edit" class="card-link">Edit</a>
-                    <form style="display: inline-block;" method="post" action="/cards/{{ $card->id }}">
-                        @csrf
-	                    @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                    </form>
+
+            <div class="modal fade" id="newDeckModal" tabindex="-1" role="dialog" aria-labelledby="newDeckModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h5 class="modal-title" id="newDeckModalLabel">Add New Deck</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="/decks">
+                                @csrf
+
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" name="name">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-    	@endforeach
 
-@endsection
+        <div class="container row decksContainer">
+
+            <!-- TODO: Make decksContainer scroll horizontally. -->
+
+            @foreach ($decks as $deck)
+                <div class="col col-md-3">
+                    <div class="card m-2 text-center">
+                        <a href="/decks/{{ $deck->id }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $deck->name }}</h5>
 
 
+                                <!-- <a class="btn btn-sm btn-outline-success" href="/decks/{{ $deck->id }}" class="card-link">Show</a>
+                                <a class="btn btn-sm btn-outline-primary" href="/decks/{{ $deck->id }}/edit" class="card-link">Edit</a>
 
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add New Card</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="/card">
-                @csrf
 
-                <div class="form-group">
-                    <label for="term">Term</label>
-                        <input type="text" class="form-control" name="term">
-                        </div>
-
-                    <div class="form-group">
-                        <label for="definition">Definition</label>
-                            <textarea class="form-control" name="definition" rows="3"></textarea>
+                                <form style="display: inline-block;" method="post" action="/decks/{{ $deck->id }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                </form> -->
+                            </div>
+                        </a>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
+                </div>
 
-            </div>
+            @endforeach
 
         </div>
+
+        <h2 class="mt-4">Cards</h2>
+        <div class="container cardContainer">
+            @foreach ($cards as $card)
+
+        		<div class="card m-2 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $card->term }}</h5>
+                        <p> "{{ $card->definition }}" </p>
+        	            <a class="btn btn-sm btn-outline-success" href="/cards/{{ $card->id }}" class="card-link">Show</a>
+                        <a class="btn btn-sm btn-outline-primary" href="/cards/{{ $card->id }}/edit" class="card-link">Edit</a>
+                        <form style="display: inline-block;" method="post" action="/cards/{{ $card->id }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+
+            @endforeach
+        </div>
+
     </div>
-</div> -->
+
+@endsection

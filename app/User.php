@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function decks() {
+        return $this->hasMany('App\Deck', 'user_id');
+    }
+
+    public function cards()
+   {
+       return $this->hasManyThrough('App\Card', 'App\Deck');
+   }
+
 }

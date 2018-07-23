@@ -17,4 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('cards', 'CardController');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/cards', 'CardController');
+Route::resource('/decks', 'DeckController');
+Route::get('/quiz/{deck}', function ($deck) {
+    $deck = \App\Deck::find($deck);
+    $cards = \App\Card::where('deck_id', $deck)->get();
+
+    return view('quiz', compact($cards));
+});

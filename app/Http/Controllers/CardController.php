@@ -23,10 +23,10 @@ class CardController extends Controller
      */
     public function index()
     {
-        $id = \Auth::id();
-        $cards = \DB::table('cards')->where('creator_id', $id)->get();
-
-        return view('cards.index', compact('cards'));
+        // $user = \Auth::user();
+        // $deck = $user
+        //
+        // return redirect()->action('DeckController@show', compact('cards'));
     }
 
     /**
@@ -47,19 +47,17 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        $id = \Auth::id();
-
         $validatedData = $request->validate([
             'term' => 'required',
             'definition' => 'required',
         ]);
 
         \DB::table('cards')->insert(
-            ['term' => $request->input('term'), 'definition' => $request->input('definition'), 'creator_id' => $id]
+            ['term' => $request->input('term'), 'definition' => $request->input('definition'), 'deck_id' => $request->input('deck_id')]
         );
 
         $request->session()->flash('status','Card created!');
-        return redirect()->action('CardController@index');
+        return redirect()->action('DeckController@show', $request->input('deck_id'));
     }
 
     /**
@@ -70,8 +68,9 @@ class CardController extends Controller
      */
     public function show($id)
     {
-        $id = \Auth::id();
-        $cards = \DB::table('cards')->where('creator_id', $id)->get();
+        $card = \App\Card::where('id', $id)->first();
+        $cards = \App\Card::where('deck_id', $card->deck_id )->get();
+
         return view('cards.show', compact('cards'));
 
     }
@@ -97,6 +96,9 @@ class CardController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $card = \App\Card::where('id', $id)->first();
+        $deck_id = $card->deck_id;
+
         $validatedData = $request->validate([
             'term' => 'required',
             'definition' => 'required',
@@ -106,7 +108,7 @@ class CardController extends Controller
         \DB::table('cards')->where('id', $id)->update(['definition' => $request->input('definition')]);
 
         $request->session()->flash('status', 'Card updated!');
-        return redirect()->action('CardController@index');
+        return redirect()->action('DeckController@show', compact('deck_id'));
     }
 
     /**
@@ -117,8 +119,11 @@ class CardController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $deletedRows = \DB::table('cards')->where('id', $id)->delete();
+        $card = \App\Card::where('id', $id)->first();
+        $deck_id = $card->deck_id;
+
+        $card->delete();
         $request->session()->flash('status', 'Activity deleted!');
-        return redirect()->action('CardController@index');
+        return redirect()->action('DeckController@show', compact('deck_id'));
     }
 }
