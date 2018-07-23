@@ -6,7 +6,9 @@
 
         <h1 class="mb-4">{{ $deck->name }}</h1>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCardModal">+ New Card</button>
+        <a href="/cards/card" class="btn btn-success">Start Quiz!</a>
+
+
 
         <div class="modal fade" id="newCardModal" tabindex="-1" role="dialog" aria-labelledby="newCardModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -44,7 +46,9 @@
         </div>
 
         <h2 class="mt-4">Cards</h2>
+
         <div class="container cardContainer">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCardModal">+ New Card</button>
             @foreach ($cards as $card)
 
         		<div class="card m-2 text-center">
