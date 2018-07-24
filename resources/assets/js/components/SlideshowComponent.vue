@@ -1,5 +1,8 @@
 <template>
 
+    <div class="container">
+        <p>{{ cardsData }}</p>
+    </div>
 
 </template>
 
@@ -7,12 +10,13 @@
 
     export default {
 
-        props: ['cardsData'],
+        props: ['cards-data'],
 
-        data: () => ({
-            cardOrder: [],
-
-        }),
+        data: function () {
+            return {
+                cardsShit:0
+            }
+        },
 
         computed: {
 
@@ -23,16 +27,10 @@
 
             determineCardOrder: function() {
 
-                function shuffle(a) {
-                var j, x, i;
-                for (i = a.length - 1; i > 0; i--) {
-                j = Math.floor(Math.random() * (i + 1));
-                x = a[i];
-                a[i] = a[j];
-                a[j] = x;
-                }
-                return a;
-}
+                var cardArray = this.cardsData;
+
+
+                return cardArray;
             }
         },
 
