@@ -1,10 +1,18 @@
 <template>
 
-    <div class="container">
-
-        <p>{{ determineCardOrder[currentIndex].term }}</p>
-        <p>{{ determineCardOrder[currentIndex].definition }}</p>
-
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <
+            </div>
+            <div class="col">
+                <p>{{ determineCardOrder[currentIndex].term }}</p>
+                <p>{{ determineCardOrder[currentIndex].definition }}</p>
+            </div>
+            <div class="col text-right">
+                >
+            </div>
+        </div>
     </div>
 
 </template>

@@ -47461,6 +47461,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47506,11 +47514,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("p", [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].term))]),
-    _vm._v(" "),
-    _c("p", [
-      _vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].definition))
+  return _c("div", { staticClass: "container mt-4" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [_vm._v("\n            <\n        ")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _c("p", [
+          _vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].term))
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].definition))
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col text-right" }, [
+        _vm._v("\n            >\n        ")
+      ])
     ])
   ])
 }
