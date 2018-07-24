@@ -1,9 +1,10 @@
 <template>
 
     <div class="container">
-        <div v-for="card in determineCardOrder">
-            <p>{{ card }}</p>
-        </div>
+
+        <p>{{ determineCardOrder[currentIndex].term }}</p>
+        <p>{{ determineCardOrder[currentIndex].definition }}</p>
+
     </div>
 
 </template>
@@ -16,6 +17,7 @@
 
         data: function () {
             return {
+                cardArray: [],
                 currentIndex: 0,
             }
         },
