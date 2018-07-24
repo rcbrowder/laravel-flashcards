@@ -1,7 +1,9 @@
 <template>
 
     <div class="container">
-        <p>{{ cardsData }}</p>
+        <div v-for="card in determineCardOrder">
+            <p>{{ card }}</p>
+        </div>
     </div>
 
 </template>
@@ -10,27 +12,30 @@
 
     export default {
 
-        props: ['cards-data'],
+        props: ['cardsdata'],
 
         data: function () {
             return {
-                cardsShit:0
+                currentIndex: 0,
             }
         },
 
         computed: {
 
-            /**
-            * Shuffles array in place.
-            * @param {Array} a items An array containing the items.
-            */
+            // <!-- Shuffles array in place. -->
 
             determineCardOrder: function() {
 
-                var cardArray = this.cardsData;
+                this.cardArray = JSON.parse(this.cardsdata);
+                var j, x, i;
+                for (i = this.cardArray.length - 1; i > 0; i--) {
+                    j = Math.floor(Math.random() * (i + 1));
+                    x = this.cardArray[i];
+                    this.cardArray[i] = this.cardArray[j];
+                    this.cardArray[j] = x;
+                }
 
-
-                return cardArray;
+                return this.cardArray;
             }
         },
 

@@ -47458,30 +47458,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    props: ['cards-data'],
+    props: ['cardsdata'],
 
     data: function data() {
         return {
-            cardsShit: 0
+            currentIndex: 0
         };
     },
 
     computed: {
 
-        /**
-        * Shuffles array in place.
-        * @param {Array} a items An array containing the items.
-        */
+        // <!-- Shuffles array in place. -->
 
         determineCardOrder: function determineCardOrder() {
 
-            var cardArray = this.cardsData;
+            this.cardArray = JSON.parse(this.cardsdata);
+            var j, x, i;
+            for (i = this.cardArray.length - 1; i > 0; i--) {
+                j = Math.floor(Math.random() * (i + 1));
+                x = this.cardArray[i];
+                this.cardArray[i] = this.cardArray[j];
+                this.cardArray[j] = x;
+            }
 
-            return cardArray;
+            return this.cardArray;
         }
     },
 
@@ -47498,9 +47504,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("p", [_vm._v(_vm._s(_vm.cardsData))])
-  ])
+  return _c(
+    "div",
+    { staticClass: "container" },
+    _vm._l(_vm.determineCardOrder, function(card) {
+      return _c("div", [_c("p", [_vm._v(_vm._s(card))])])
+    })
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

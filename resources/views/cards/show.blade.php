@@ -4,7 +4,7 @@
     <div class="container">
         <button type="button" class="btn btn-primary" onclick="window.history.back()">Back</button>
 
-        <slideshow-component cards-data="{{ $cards->toJson() }}"></slideshow-component>
+        <slideshow-component cardsdata="{{ $cards->toJson() }}"></slideshow-component>
 
     </div>
 
