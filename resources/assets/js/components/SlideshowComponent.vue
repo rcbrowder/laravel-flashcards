@@ -35,11 +35,15 @@
 
         methods: {
             next: function() {
-                this.currentIndex++;
+                if (this.currentIndex < this.cardArray.length-1) {
+                    this.currentIndex++;
+                }
             },
 
             previous: function() {
-                this.currentIndex--;
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                }
             }
         },
 

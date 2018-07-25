@@ -47487,11 +47487,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         next: function next() {
-            this.currentIndex++;
+            if (this.currentIndex < this.cardArray.length - 1) {
+                this.currentIndex++;
+            }
         },
 
         previous: function previous() {
-            this.currentIndex--;
+            if (this.currentIndex > 0) {
+                this.currentIndex--;
+            }
         }
     },
 
