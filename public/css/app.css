@@ -10475,3 +10475,56 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.scene {
+  width: 200px;
+  height: 260px;
+  -webkit-perspective: 600px;
+          perspective: 600px;
+}
+
+.flipcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.card__face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.card__face--back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.flipcard.is-flipped {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.slide-enter-active {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.slide-leave-active {
+  -webkit-transition: all 1.5s;
+  transition: all 1.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  -webkit-transform: translateX(100px);
+          transform: translateX(100px);
+}
+
