@@ -47460,6 +47460,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47476,11 +47487,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         next: function next() {
-            currentIndex++;
+            this.currentIndex++;
         },
 
         previous: function previous() {
-            currentIndex--;
+            this.currentIndex--;
         }
     },
 
@@ -47516,32 +47527,74 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col scene scene--flipcard" }, [
-    _c(
-      "div",
-      {
-        staticClass: "flipcard",
-        class: { "is-flipped": _vm.cardSide },
-        on: {
-          click: function($event) {
-            _vm.cardSide = !_vm.cardSide
+  return _c("div", { staticClass: "container", attrs: { id: "slidebox" } }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        {
+          staticClass: "col",
+          on: {
+            click: function($event) {
+              _vm.previous()
+            }
           }
-        }
-      },
-      [
+        },
+        [
+          _c("img", {
+            attrs: { src: "/my-icons-collection/png/005-previous.png", alt: "" }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col scene scene--flipcard" }, [
         _c(
-          "p",
-          { staticClass: "card-body text-center card__face card__face--front" },
-          [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].definition))]
-        ),
-        _vm._v(" "),
-        _c(
-          "p",
-          { staticClass: "card-body text-center card__face card__face--back" },
-          [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].term))]
+          "div",
+          {
+            staticClass: "flipcard",
+            class: { "is-flipped": _vm.cardSide },
+            on: {
+              click: function($event) {
+                _vm.cardSide = !_vm.cardSide
+              }
+            }
+          },
+          [
+            _c(
+              "p",
+              { staticClass: "card text-center card__face card__face--front" },
+              [
+                _vm._v(
+                  _vm._s(_vm.determineCardOrder[_vm.currentIndex].definition)
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "card text-center card__face card__face--back" },
+              [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].term))]
+            )
+          ]
         )
-      ]
-    )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "col text-right",
+          on: {
+            click: function($event) {
+              _vm.next()
+            }
+          }
+        },
+        [
+          _c("img", {
+            attrs: { src: "/my-icons-collection/png/006-next.png", alt: "" }
+          })
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = []

@@ -1,11 +1,22 @@
 <template>
+    <div class="container" id="slidebox">
+        <div class="row">
+            <div class="col" v-on:click="previous()">
+                <img src="/my-icons-collection/png/005-previous.png" alt="">
+            </div>
+
             <div class="col scene scene--flipcard">
                 <div class="flipcard" v-bind:class="{ 'is-flipped' : cardSide }" v-on:click="cardSide = !cardSide">
-                    <p class="card-body text-center card__face card__face--front">{{ determineCardOrder[currentIndex].definition }}</p>
-                    <p class="card-body text-center card__face card__face--back" >{{ determineCardOrder[currentIndex].term }}</p>
+                    <p class="card text-center card__face card__face--front">{{ determineCardOrder[currentIndex].definition }}</p>
+                    <p class="card text-center card__face card__face--back" >{{ determineCardOrder[currentIndex].term }}</p>
                 </div>
             </div>
 
+            <div class="col text-right" v-on:click="next()">
+                <img src="/my-icons-collection/png/006-next.png" alt="">
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -24,11 +35,11 @@
 
         methods: {
             next: function() {
-                currentIndex++;
+                this.currentIndex++;
             },
 
             previous: function() {
-                currentIndex--;
+                this.currentIndex--;
             }
         },
 

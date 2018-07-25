@@ -10502,12 +10502,7 @@ a.text-dark:focus {
           backface-visibility: hidden;
 }
 
-.card__face--front {
-  background: red;
-}
-
 .card__face--back {
-  background: blue;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
