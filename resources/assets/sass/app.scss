@@ -35,14 +35,25 @@
 }
 
 .card__face--front {
-  background: red;
+
 }
 
 .card__face--back {
-  background: blue;
   transform: rotateY( 180deg );
 }
 
 .flipcard.is-flipped {
   transform: rotateY(180deg);
+}
+
+
+.slide-enter-active {
+  transition: all 1s;
+}
+.slide-leave-active {
+  transition: all 1.5s;
+}
+.slide-enter, .slide-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(100px);
 }

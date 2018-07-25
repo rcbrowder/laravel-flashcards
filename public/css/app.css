@@ -10502,12 +10502,7 @@ a.text-dark:focus {
           backface-visibility: hidden;
 }
 
-.card__face--front {
-  background: red;
-}
-
 .card__face--back {
-  background: blue;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
@@ -10515,5 +10510,21 @@ a.text-dark:focus {
 .flipcard.is-flipped {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+}
+
+.slide-enter-active {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.slide-leave-active {
+  -webkit-transition: all 1.5s;
+  transition: all 1.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  -webkit-transform: translateX(100px);
+          transform: translateX(100px);
 }
 
