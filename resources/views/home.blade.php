@@ -19,11 +19,17 @@
     @endif
 
     <div class="container">
+        <div class="row">
 
-        <h2>Decks</h2>
+            <div class="col">
+                <h2>Decks</h2>
+            </div>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newDeckModal">+ New Deck</button>
-        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">+ New Card</button> -->
+            <div class="col text-right">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newDeckModal">+ New Deck</button>
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">+ New Card</button> -->
+            </div>
+        </div>
 
 
 
