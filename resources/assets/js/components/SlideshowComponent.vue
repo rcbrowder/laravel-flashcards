@@ -1,14 +1,10 @@
 <template>
-
-    <div class="container mt-4">
-        <div class="container row">
-            <div class="col">
-                <p>{{ determineCardOrder[currentIndex].term }}</p>
-                <p>{{ determineCardOrder[currentIndex].definition }}</p>
+            <div class="col scene">
+                <div class="card flipcard v-on:'click=is-flipped'">
+                    <p class="card-body text-center card__face card__face--back">{{ determineCardOrder[currentIndex].term }}</p>
+                    <p class="card-body text-center card__face card__face--front">{{ determineCardOrder[currentIndex].definition }}</p>
+                </div>
             </div>
-
-        </div>
-    </div>
 
 </template>
 

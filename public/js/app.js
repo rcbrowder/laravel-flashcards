@@ -47460,10 +47460,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47509,17 +47505,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mt-4" }, [
-    _c("div", { staticClass: "container row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("p", [
-          _vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].term))
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].definition))
-        ])
-      ])
+  return _c("div", { staticClass: "col scene" }, [
+    _c("div", { staticClass: "card flipcard v-on:'click=is-flipped'" }, [
+      _c(
+        "p",
+        { staticClass: "card-body text-center card__face card__face--back" },
+        [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].term))]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticClass: "card-body text-center card__face card__face--front" },
+        [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].definition))]
+      )
     ])
   ])
 }
