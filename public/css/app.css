@@ -10512,3 +10512,19 @@ a.text-dark:focus {
           transform: rotateY(180deg);
 }
 
+.slide-enter-active {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.slide-leave-active {
+  -webkit-transition: all 1.5s;
+  transition: all 1.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  -webkit-transform: translateX(100px);
+          transform: translateX(100px);
+}
+

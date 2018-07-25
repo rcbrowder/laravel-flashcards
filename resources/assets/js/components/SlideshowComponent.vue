@@ -1,18 +1,22 @@
 <template>
     <div class="container" id="slidebox">
         <div class="row">
-            <div class="col" v-on:click="previous()">
+            <div class="col" @click="previous()">
                 <img src="/my-icons-collection/png/005-previous.png" alt="">
             </div>
 
             <div class="col scene scene--flipcard">
-                <div class="flipcard" v-bind:class="{ 'is-flipped' : cardSide }" v-on:click="cardSide = !cardSide">
-                    <p class="card text-center card__face card__face--front">{{ determineCardOrder[currentIndex].definition }}</p>
-                    <p class="card text-center card__face card__face--back" >{{ determineCardOrder[currentIndex].term }}</p>
+                <div class="flipcard" v-bind:class="{ 'is-flipped' : cardSide }" @click="cardSide = !cardSide">
+                    <transition name="slide">
+                        <p class="card text-center card__face card__face--front">{{ determineCardOrder[currentIndex].definition }}</p>
+                    </transition>
+                    <transition name="slide">
+                        <p class="card text-center card__face card__face--back">{{ determineCardOrder[currentIndex].term }}</p>
+                    </transition>
                 </div>
             </div>
 
-            <div class="col text-right" v-on:click="next()">
+            <div class="col text-right" @click="next()">
                 <img src="/my-icons-collection/png/006-next.png" alt="">
             </div>
         </div>
@@ -30,6 +34,7 @@
                 cardArray: [],
                 currentIndex: 0,
                 cardSide: false,
+                slide: 'none',
             }
         },
 
@@ -37,12 +42,14 @@
             next: function() {
                 if (this.currentIndex < this.cardArray.length-1) {
                     this.currentIndex++;
+                    this.slide = 'right';
                 }
             },
 
             previous: function() {
                 if (this.currentIndex > 0) {
                     this.currentIndex--;
+                    this.slide= 'left';
                 }
             }
         },

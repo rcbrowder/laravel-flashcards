@@ -47471,6 +47471,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47481,7 +47485,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             cardArray: [],
             currentIndex: 0,
-            cardSide: false
+            cardSide: false,
+            slide: 'none'
         };
     },
 
@@ -47489,12 +47494,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         next: function next() {
             if (this.currentIndex < this.cardArray.length - 1) {
                 this.currentIndex++;
+                this.slide = 'right';
             }
         },
 
         previous: function previous() {
             if (this.currentIndex > 0) {
                 this.currentIndex--;
+                this.slide = 'left';
             }
         }
     },
@@ -47563,22 +47570,29 @@ var render = function() {
             }
           },
           [
-            _c(
-              "p",
-              { staticClass: "card text-center card__face card__face--front" },
-              [
-                _vm._v(
-                  _vm._s(_vm.determineCardOrder[_vm.currentIndex].definition)
-                )
-              ]
-            ),
+            _c("transition", { attrs: { name: "slide" } }, [
+              _c(
+                "p",
+                {
+                  staticClass: "card text-center card__face card__face--front"
+                },
+                [
+                  _vm._v(
+                    _vm._s(_vm.determineCardOrder[_vm.currentIndex].definition)
+                  )
+                ]
+              )
+            ]),
             _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "card text-center card__face card__face--back" },
-              [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].term))]
-            )
-          ]
+            _c("transition", { attrs: { name: "slide" } }, [
+              _c(
+                "p",
+                { staticClass: "card text-center card__face card__face--back" },
+                [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].term))]
+              )
+            ])
+          ],
+          1
         )
       ]),
       _vm._v(" "),
