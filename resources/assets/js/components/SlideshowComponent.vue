@@ -1,7 +1,7 @@
 <template>
             <div class="col scene">
-                <div class="card flipcard v-on:'click=is-flipped'">
-                    <p class="card-body text-center card__face card__face--back">{{ determineCardOrder[currentIndex].term }}</p>
+                <div class="card flipcard" v-bind:class="{ 'is-flipped' : cardSide }" v-on:click="cardSide = !cardSide">
+                    <p class="card-body text-center card__face card__face--back" >{{ determineCardOrder[currentIndex].term }}</p>
                     <p class="card-body text-center card__face card__face--front">{{ determineCardOrder[currentIndex].definition }}</p>
                 </div>
             </div>
@@ -18,6 +18,7 @@
             return {
                 cardArray: [],
                 currentIndex: 0,
+                cardSide: true,
             }
         },
 

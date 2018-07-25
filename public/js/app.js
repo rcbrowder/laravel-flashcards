@@ -47469,7 +47469,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             cardArray: [],
-            currentIndex: 0
+            currentIndex: 0,
+            cardSide: true
         };
     },
 
@@ -47506,19 +47507,31 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col scene" }, [
-    _c("div", { staticClass: "card flipcard v-on:'click=is-flipped'" }, [
-      _c(
-        "p",
-        { staticClass: "card-body text-center card__face card__face--back" },
-        [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].term))]
-      ),
-      _vm._v(" "),
-      _c(
-        "p",
-        { staticClass: "card-body text-center card__face card__face--front" },
-        [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].definition))]
-      )
-    ])
+    _c(
+      "div",
+      {
+        staticClass: "card flipcard",
+        class: { "is-flipped": _vm.cardSide },
+        on: {
+          click: function($event) {
+            _vm.cardSide = !_vm.cardSide
+          }
+        }
+      },
+      [
+        _c(
+          "p",
+          { staticClass: "card-body text-center card__face card__face--back" },
+          [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].term))]
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "card-body text-center card__face card__face--front" },
+          [_vm._v(_vm._s(_vm.determineCardOrder[_vm.currentIndex].definition))]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = []
