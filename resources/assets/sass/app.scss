@@ -8,9 +8,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+body {
+    background-color: #f0f0f0;
+}
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  background-color: #9615CE;
+  box-shadow: 3px 3px 9px 1px #4d4d4d;
 }
 
 .scene {
@@ -46,14 +49,33 @@
   transform: rotateY(180deg);
 }
 
+// Home Page
 
-.slide-enter-active {
-  transition: all 1s;
+#newDeck {
+    background-color: #226CD1;
+    border-color: #226CD1;
+    border-radius: 0;
+    box-shadow: 3px 3px 2px 1px #4d4d4d;
 }
-.slide-leave-active {
-  transition: all 1.5s;
+
+.card {
+    background-color: #ffffff;
+    box-shadow: 3px 3px 9px 1px #4d4d4d;
 }
-.slide-enter, .slide-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(100px);
-}
+
+
+
+
+
+// Slide transition
+
+// .slide-enter-active {
+//   transition: all 1s;
+// }
+// .slide-leave-active {
+//   transition: all 1.5s;
+// }
+// .slide-enter, .slide-leave-to
+// /* .slide-fade-leave-active below version 2.1.8 */ {
+//   transform: translateX(100px);
+// }

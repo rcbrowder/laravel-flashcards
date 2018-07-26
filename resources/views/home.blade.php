@@ -19,13 +19,17 @@
     @endif
 
     <div class="container">
+        <div class="row">
 
-        <h2>Decks</h2>
+            <div class="col">
+                <h2>Decks</h2>
+            </div>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newDeckModal">+ New Deck</button>
-        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">+ New Card</button> -->
-
-
+            <div class="col text-right">
+                <button id="newDeck" type="button" class="btn btn-primary" data-toggle="modal" data-target="#newDeckModal">+ New Deck</button>
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">+ New Card</button> -->
+            </div>
+        </div>
 
 
             <div class="modal fade" id="newDeckModal" tabindex="-1" role="dialog" aria-labelledby="newDeckModalLabel" aria-hidden="true">
@@ -60,7 +64,7 @@
             </div>
 
 
-        <div class="container row decksContainer">
+        <div class="row decksContainer">
 
             <!-- TODO: Make decksContainer scroll horizontally. -->
 
@@ -91,7 +95,7 @@
         </div>
 
         <h2 class="mt-4">Cards</h2>
-        <div class="container cardContainer">
+        <div class="cardContainer">
             @foreach ($cards as $card)
 
         		<div class="card m-2 text-center">

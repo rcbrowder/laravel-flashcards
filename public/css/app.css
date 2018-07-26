@@ -10469,10 +10469,14 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background-color: #f0f0f0;
+}
+
 .navbar-laravel {
-  background-color: #fff;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  background-color: #9615CE;
+  -webkit-box-shadow: 3px 3px 9px 1px #4d4d4d;
+          box-shadow: 3px 3px 9px 1px #4d4d4d;
 }
 
 .scene {
@@ -10512,19 +10516,17 @@ a.text-dark:focus {
           transform: rotateY(180deg);
 }
 
-.slide-enter-active {
-  -webkit-transition: all 1s;
-  transition: all 1s;
+#newDeck {
+  background-color: #226CD1;
+  border-color: #226CD1;
+  border-radius: 0;
+  -webkit-box-shadow: 3px 3px 2px 1px #4d4d4d;
+          box-shadow: 3px 3px 2px 1px #4d4d4d;
 }
 
-.slide-leave-active {
-  -webkit-transition: all 1.5s;
-  transition: all 1.5s;
-}
-
-.slide-enter,
-.slide-leave-to {
-  -webkit-transform: translateX(100px);
-          transform: translateX(100px);
+.card {
+  background-color: #ffffff;
+  -webkit-box-shadow: 3px 3px 9px 1px #4d4d4d;
+          box-shadow: 3px 3px 9px 1px #4d4d4d;
 }
 
